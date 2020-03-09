@@ -1,15 +1,22 @@
 <template>
   <div>
+<<<<<<< HEAD
     <ul>
       <li v-for="data in datalist" :key="data.filmId" @click="handleClick(data.filmId)">
         <img :src="data.poster"/>
           <h4>{{data.name}}</h4>
           <p>观众评分：{{data.grade}}</p>
         </li>
+=======
+    nowplaying
+    <ul>
+      <li v-for="data in datalist" :key="data" @click="handleClick(data)">{{data}}</li>
+>>>>>>> 533a9d0b191cbfb46a84cffc7d88cb9d5563d3a8
     </ul>
   </div>
 </template>
 <script>
+<<<<<<< HEAD
 import http from '@/util/http'
 // 自定义 过滤器 数字====>字符串
 export default {
@@ -29,6 +36,14 @@ export default {
       this.datalist = res.data.data.films
     })
   },
+=======
+export default {
+  data () {
+    return {
+      datalist: ['1111', '2222', '3333333']
+    }
+  },
+>>>>>>> 533a9d0b191cbfb46a84cffc7d88cb9d5563d3a8
   methods: {
     handleClick (id) {
       this.$router.push(`/detail/${id}`) // 切换页面
@@ -36,6 +51,7 @@ export default {
   }
 }
 </script>
+<<<<<<< HEAD
 <style lang="scss" scoped>
 li{
   display: hidden;
@@ -49,3 +65,5 @@ li{
   }
 }
 </style>
+=======
+>>>>>>> 533a9d0b191cbfb46a84cffc7d88cb9d5563d3a8
