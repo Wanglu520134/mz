@@ -4,14 +4,16 @@
       <li v-for="data in datalist" :key="data.filmId" @click="handleClick(data.filmId)">
         <img :src="data.poster"/>
           <h4>{{data.name}}</h4>
-          <p>观众评分：{{data.grade}}</p>
+          <span>观众评分：{{data.grade}}</span> <span>{{data.filmType.name}}</span>
+          <p class="actors">主演：{{data.actors | actorFilter}}</p>
+          <p>{{data.nation}} | {{data.runtime}}分钟</p>
         </li>
     </ul>
   </div>
 </template>
 <script>
 import http from '@/util/http'
-// 自定义 过滤器 数字====>字符串
+
 export default {
   data () {
     return {
@@ -25,7 +27,7 @@ export default {
         'X-Host': 'mall.film-ticket.film.list'
       }
     }).then(res => {
-      console.log(res.data)
+      // console.log(res.data)
       this.datalist = res.data.data.films
     })
   },
@@ -46,6 +48,11 @@ li{
   }
   h4 p{
     padding: 5px;
+  }
+  .actors{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 </style>
